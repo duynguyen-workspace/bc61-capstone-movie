@@ -1,4 +1,4 @@
-# React + Vite
+# BC61 - Capstone React [Project Movie]
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
