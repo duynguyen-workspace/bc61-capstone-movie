@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+    font-family: 'Open Sans Variable', sans-serif;
+    box-sizing: border-box;
+}

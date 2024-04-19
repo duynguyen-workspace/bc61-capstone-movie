@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MovieBoard = () => {
+const MovieManager = () => {
     return (
         <div className=''>
             Movie Dashboard (admin)
@@ -8,4 +8,4 @@ const MovieBoard = () => {
     )
 }
 
-export default MovieBoard
+export default MovieManager

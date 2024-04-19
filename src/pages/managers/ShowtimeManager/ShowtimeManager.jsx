@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ShowtimeBoard = () => {
+const ShowtimeManager = () => {
     return (
         <div className=''>
             Showtime Dashboard (admin)
@@ -8,4 +8,4 @@ const ShowtimeBoard = () => {
     )
 }
 
-export default ShowtimeBoard
+export default ShowtimeManager

@@ -8,12 +8,15 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 Supported Libraries:
+- Fontawesome (cdn)
+- Fontsource: Open Sans (font-family)
 - SASS / SCSS
 - TailwindCSS
 - Antd (Ant Design)
 - React Router Dom
 - Redux Toolkit
 - Axios
+- Tanstack Query
 - Formik + Yup
 - React Youtube
 - React Lotties

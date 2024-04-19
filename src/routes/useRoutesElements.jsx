@@ -16,10 +16,10 @@ const EventPage = lazy(() => import("../pages/event"));
 const ErrorPage = lazy(() => import("../pages/error"));
 
 const AdminPage = lazy(() => import("../pages/admin"));
-const MovieBoardSection = lazy(() => import("../pages/boards/MovieBoard"));
-const UserBoardSection = lazy(() => import("../pages/boards/UserBoard"));
-const ShowtimeBoardSection = lazy(() =>
-    import("../pages/boards/ShowtimeBoard")
+const MovieManagerPage = lazy(() => import("../pages/managers/MovieManager"));
+const UserManagerPage = lazy(() => import("../pages/managers/UserManager"));
+const ShowtimeManagerPage = lazy(() =>
+    import("../pages/managers/ShowtimeManager")
 );
 
 const AuthRouter = () => {
@@ -108,7 +108,7 @@ const useRoutesElements = () => {
                             path: "users",
                             element: (
                                 <Suspense fallback={<div>Loading...</div>}>
-                                    <UserBoardSection />
+                                    <UserManagerPage />
                                 </Suspense>
                             ),
                         },
@@ -116,7 +116,7 @@ const useRoutesElements = () => {
                             path: "movies",
                             element: (
                                 <Suspense fallback={<div>Loading...</div>}>
-                                    <MovieBoardSection />
+                                    <MovieManagerPage />
                                 </Suspense>
                             ),
                         },
@@ -124,7 +124,7 @@ const useRoutesElements = () => {
                             path: "showtime",
                             element: (
                                 <Suspense fallback={<div>Loading...</div>}>
-                                    <ShowtimeBoardSection />
+                                    <ShowtimeManagerPage />
                                 </Suspense>
                             ),
                         },
