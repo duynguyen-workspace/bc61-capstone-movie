@@ -7,4 +7,7 @@ export default {
     BOOKING: "/booking",
     BLOG: "/blog",
     EVENT: "/event",
-}
+    THEATER: "/theater",
+    CONTACT: "/contact",
+    LIST_MOVIES: "/list-movie"
+};
