@@ -10,7 +10,7 @@ import paths from "../../paths";
 import { handleGetValue } from "../../redux/slices/user.slice";
 import { useDispatch } from "react-redux";
 
-const FormLogin = () => {
+const FormLogin = ({ handleAlert }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -26,10 +26,12 @@ const FormLogin = () => {
           .then((res) => {
             console.log(res);
             setLocalStorage("user", res.data.content);
-            // navigate(paths.REGISTER);
             dispatch(handleGetValue(res.data.content));
+            handleAlert("success", "Đăng Nhập Thành Công");
+            navigate(paths.HOME);
           })
           .catch((err) => {
+            handleAlert("error", "Đăng Nhập Thất Bại");
             console.log(err);
           });
       },

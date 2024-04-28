@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import IconSocial from "../../../components/IconSocial/IconSocial";
 import Lottie from "react-lottie";
 
 import "./Login.scss";
 import loginAnimation from "../../../assets/lotties/loginAnimation.json";
 import FormLogin from "../../../components/FormLogin/FormLogin";
+import { AlertMessage } from "../../../App";
 
 const Login = () => {
-  console.log("hello");
+  const { handleAlert } = useContext(AlertMessage);
+  // console.log(handleAlert);
   const defaultOptions = {
     loop: false,
     autoplay: true,
@@ -38,7 +40,7 @@ const Login = () => {
 
           {/* Form Content */}
           <div className="login-content">
-            <FormLogin />
+            <FormLogin handleAlert={handleAlert} />
           </div>
 
           {/* Form Footer */}
