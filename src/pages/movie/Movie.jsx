@@ -92,20 +92,20 @@ const Movie = () => {
                   )}
                 </div>
                 <div className="flex gap-5 flex-col text-[#f58020] text-[16px] sm:text-[20px] sm:gap-10">
-                  <div className="flex gap-5">
+                  <div className="flex gap-5 items-center">
                     <div className="w-[25px] h-[25px] text-center leading-[25px]">
                       <i className="fa-regular fa-clock"></i>
                     </div>
                     <p className="text-white">120 phút</p>
                   </div>
-                  <div className="flex gap-5">
+                  <div className="flex gap-5 items-center">
                     <div className="w-[25px] h-[25px] text-center leading-[25px]">
                       <i className="fa-regular fa-calendar"></i>
                     </div>
 
                     <p className="text-white">{formatMovieDate}</p>
                   </div>
-                  <div className="flex gap-5">
+                  <div className="flex gap-5 items-center">
                     <div className="w-[25px] h-[25px] text-center leading-[25px]">
                       <i className="fa-solid fa-star"></i>
                     </div>
