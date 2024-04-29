@@ -5,6 +5,33 @@
 *,
 *::before,
 *::after {
-    font-family: 'Open Sans Variable', sans-serif;
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans Variable", sans-serif !important;
+  position: relative;
+}
+
+@layer utilities {
+  .evaluationCard {
+    @apply basis-[calc((100%-30px)/2)] md:basis-[unset] text-center;
+
+    & > div:first-child {
+      @apply flex justify-center items-center mb-3 gap-2;
+    }
+  }
+
+  .buttonGradient {
+    background-image: -webkit-linear-gradient(
+      169deg,
+      #5560ff 17%,
+      #aa52a1 63%,
+      #ff4343 100%
+    );
+  }
+
+  .container-me {
+    @apply md:max-w-[960px]  mx-auto;
+  }
 }
