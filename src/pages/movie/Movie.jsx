@@ -11,6 +11,7 @@ import Evaluation from "./components/Evaluation";
 import { getMovieDetailApi } from "../../api/movie.api";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
+import Ticket from "./components/Ticket";
 
 const INIT_MOVIE = {
   biDanh: "",
@@ -125,13 +126,17 @@ const Movie = () => {
           </div>
         </div>
 
-        <div className="container-me">
+        <div className="container-me mb-5">
           <div className="px-[10px]">
             <p className="text-[#31d7a9] pt-5 pb-3">Nội dung phim</p>
             <p className="text-white leading-5 text-[14px] font-thin">
               {movieDetail.moTa}
             </p>
           </div>
+        </div>
+
+        <div className="bg-[#001232]">
+          <Ticket movieId={movieId} />
         </div>
       </div>
     </div>

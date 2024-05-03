@@ -30,3 +30,23 @@ export const getMovieDetailApi = async (id) => {
     throw new Error(exception);
   }
 };
+
+export const getQuanLyRapApi = async () => {
+  try {
+    const response = await fetcher.get("/QuanLyRap/LayThongTinHeThongRap");
+    return response.data.content;
+  } catch (exception) {
+    throw new Error(exception);
+  }
+};
+
+export const getTicketApi = async (id) => {
+  try {
+    const response = await fetcher.get(
+      `/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
+    );
+    return response.data.content;
+  } catch (exception) {
+    throw new Error(exception);
+  }
+};
