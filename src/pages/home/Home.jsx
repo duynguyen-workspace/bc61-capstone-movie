@@ -13,6 +13,7 @@ const Home = () => {
     return (
         <div className='home'>
             Home Content ...
+            <i className="fa-duotone fa-users"></i>
         </div>
     )
 }
