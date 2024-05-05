@@ -5,8 +5,14 @@ export default {
     extend: {
       backgroundImage: {
         "hero-pattern": "url('./src/assets/images/banner.jpg')",
+        container: {
+          center: true,
+        },
+        colors: {
+          form: "rgba(255, 255, 255, 255, 0.5)",
+        },
       },
     },
+    plugins: [],
   },
-  plugins: [],
 };
