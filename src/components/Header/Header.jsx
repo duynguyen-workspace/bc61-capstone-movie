@@ -33,7 +33,7 @@ const Header = () => {
     let [openLR, setOpenLR] = useState(false);
     return (
         <header className={navbar ? "header header__active" : "header"}>
-            <div className="header__container">
+            <div className="header__container container mx-auto">
                 <nav className="border-gray-200 px-4 lg:px-6 py-2.5 ">
                     <span
                         className="check__btn"
