@@ -76,10 +76,10 @@ const Movie = () => {
           <div className="container-me relative">
             <div className="px-[10px] flex gap-3 pb-[10px]">
               <div
-                className={`w-full grow basis-0 rounded-md overflow-hidden border-2 border-solid border-[#17305f] relative z-10 bg-cover bg-center md:min-h-[300px] lg:min-h-[460px]`}
+                className={`w-full grow basis-0 rounded-md overflow-hidden border-2 border-solid border-[#17305f] relative z-10 bg-no-repeat bg-cover bg-center md:min-h-[300px] lg:min-h-[460px]`}
                 style={{ backgroundImage: `url('${movieDetail.hinhAnh}')` }}
               >
-                {/* <img src={MovieImg} alt="" /> */}
+                {/* <img className="block h-full object-fill" src={`${movieDetail.hinhAnh}`} alt="" />  */}
               </div>
               <div className="grow-[2] basis-0">
                 <div className="flex justify-between items-center">
