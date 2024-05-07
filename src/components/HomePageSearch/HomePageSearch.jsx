@@ -33,39 +33,40 @@ const HomePageSearch = () => {
                         </button>
                     </div>
                 </div>
+                {/* Header Search */}
                 <div className="hsearch__bar">
                     <div className="hsearchBar__item">
                         <form className="hsearchBar__form">
+                            <div className="form__group large">
+                                <input
+                                    className="hsearch__input text-white"
+                                    type="text"
+                                    placeholder="Search for movies"
+                                />
+                                <button type="submit" className="btn__submit">
+                                    <i className="fa-solid fa-magnifying-glass text-white"></i>
+                                </button>
+                            </div>
                             <div className="form__group">
-                                <i className="fa-solid fa-clapperboard"></i>
-                                <span>movie</span>
+                                <i className="fa-solid fa-clapperboard icon__search"></i>
+                                <span>Movie</span>
                                 <select name="movie">
                                     <option value="film">Film</option>
                                 </select>
                             </div>
                             <div className="form__group">
-                                <i className="fa-solid fa-masks-theater"></i>
+                                <i className="fa-solid fa-masks-theater icon__search"></i>
                                 <span>Theater</span>
                                 <select name="movie">
                                     <option value="theater">Theater</option>
                                 </select>
                             </div>
                             <div className="form__group">
-                                <i className="fa-solid fa-clapperboard"></i>
-                                <span>movie</span>
+                                <i className="fa-solid fa-calendar-days icon__search"></i>
+                                <span>Date</span>
                                 <select name="movie">
-                                    <option value="film">Film</option>
+                                    <option value="film">Date</option>
                                 </select>
-                            </div>
-                            <div className="form__group">
-                                <input
-                                    className="hsearch__input text-white"
-                                    type="text"
-                                    placeholder="Search for movies"
-                                />
-                                <button type="submit">
-                                    <i className="fa-solid fa-magnifying-glass"></i>
-                                </button>
                             </div>
                         </form>
                     </div>
