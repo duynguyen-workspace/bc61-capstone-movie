@@ -1,0 +1,84 @@
+import { useEffect, useState } from "react";
+import "./homePageMovie.scss";
+import { homePageService } from "../../api/homePage";
+import { Link } from "react-router-dom";
+const HomePageMovie = () => {
+    const [arrMoviePagination, setArrMoviePagination] = useState([]);
+    useEffect(() => {
+        homePageService
+            .moviePagination()
+            .then((res) => {
+                // console.log(res);
+                // console.log(res.data.content.items);
+                setArrMoviePagination(res.data.content.items);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+    console.log(arrMoviePagination);
+
+    return (
+        <div className="hMovie__container">
+            {/* HomePage Movie Header */}
+            <div className="hMovie__header">
+                <h2 className="text-white text-5xl font-bold leading-10">
+                    MOVIES
+                </h2>
+                <Link className="hMovie__viewAll text-[#31d7a9] font-bold text-2xl">
+                    View All
+                </Link>
+            </div>
+            {/* HomePage Movie List Pagnitration */}
+            <div className="hMovie__item grid grid-cols-3 gap-5">
+                {arrMoviePagination.map((item, index) => {
+                    return (
+                        <div
+                            className="text-white hMovie__item__contain"
+                            key={index}
+                        >
+                            <div className="hMovie__img">
+                                <img
+                                    className="h-[400px] w-full"
+                                    src={item?.hinhAnh}
+                                    alt=""
+                                />
+                            </div>
+                            <div className="hMovie__content">
+                                <div className="hMContent__title flex items-center ">
+                                    <span className="text-white bg-blue-600 py-2 px-3 rounded-md mr-6">
+                                        C18
+                                    </span>
+                                    <span className="text-white text-[1.5rem] line-clamp-1">
+                                        {item?.tenPhim}
+                                    </span>
+                                </div>
+                                <div className="hMovie__rating flex justify-evenly items-center mt-3 pb-4">
+                                    <div>
+                                        <i className="fa-solid fa-thumbs-up text-yellow-500 text-2xl mr-3"></i>
+                                        <span className="font-semibold">
+                                            88%{" "}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <i className="fa-solid fa-fire text-red-500 text-2xl mr-3"></i>
+                                        <span className="font-semibold">
+                                            88%
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="view__detail">
+                                <button className="bg-yellow-500 rounded-md py-3 text-xl">
+                                    View Detail
+                                </button>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
+
+export default HomePageMovie;

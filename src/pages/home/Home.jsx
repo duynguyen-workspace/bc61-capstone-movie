@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getMoviesApi } from "../../api/movie.api";
 import Banner from "../../components/Banner/Banner";
 import HomePageSearch from "../../components/HomePageSearch/HomePageSearch";
+import HomePageMovie from "../../components/HomePageMovie/HomePageMovie";
+import "./home.scss";
 
 const Home = () => {
     useEffect(() => {
@@ -16,6 +18,7 @@ const Home = () => {
         <div className="home">
             <Banner />
             <HomePageSearch />
+            <HomePageMovie />
         </div>
     );
 };
