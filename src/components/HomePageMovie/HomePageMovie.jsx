@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./homePageMovie.scss";
 import { homePageService } from "../../api/homePage";
 import { Link } from "react-router-dom";
+import { Button, Modal } from "antd";
 const HomePageMovie = () => {
     const [arrMoviePagination, setArrMoviePagination] = useState([]);
     useEffect(() => {
@@ -16,7 +17,18 @@ const HomePageMovie = () => {
                 console.log(err);
             });
     }, []);
-    console.log(arrMoviePagination);
+    // console.log(arrMoviePagination);
+    // Modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div className="hMovie__container">
@@ -30,7 +42,7 @@ const HomePageMovie = () => {
                 </Link>
             </div>
             {/* HomePage Movie List Pagnitration */}
-            <div className="hMovie__item grid grid-cols-3 gap-5">
+            <div className="hMovie__item grid grid-cols-3 gap-8">
                 {arrMoviePagination.map((item, index) => {
                     return (
                         <div
@@ -39,10 +51,24 @@ const HomePageMovie = () => {
                         >
                             <div className="hMovie__img">
                                 <img
-                                    className="h-[400px] w-full"
+                                    className="h-[370px] w-full"
                                     src={item?.hinhAnh}
-                                    alt=""
+                                    alt="img"
                                 />
+                                <div className="hMovie__icon">
+                                    <Button type="primary" onClick={showModal}>
+                                        <i className="fa-solid fa-play"></i>
+                                    </Button>
+                                    <Modal
+                                        open={isModalOpen}
+                                        onOk={handleOk}
+                                        onCancel={handleCancel}
+                                    >
+                                        <div>
+                                            {/* Trailer Movie */}
+                                        </div>
+                                    </Modal>
+                                </div>
                             </div>
                             <div className="hMovie__content">
                                 <div className="hMContent__title flex items-center ">
