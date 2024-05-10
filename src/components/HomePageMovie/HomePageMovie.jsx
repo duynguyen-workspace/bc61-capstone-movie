@@ -3,8 +3,10 @@ import "./homePageMovie.scss";
 import { homePageService } from "../../api/homePage";
 import { Link } from "react-router-dom";
 import { Button, Modal } from "antd";
+
 const HomePageMovie = () => {
     const [arrMoviePagination, setArrMoviePagination] = useState([]);
+
     useEffect(() => {
         homePageService
             .moviePagination()
@@ -42,7 +44,7 @@ const HomePageMovie = () => {
                 </Link>
             </div>
             {/* HomePage Movie List Pagnitration */}
-            <div className="hMovie__item grid grid-cols-3 gap-8">
+            <div className="hMovie__item grid grid-cols-3 gap-7">
                 {arrMoviePagination.map((item, index) => {
                     return (
                         <div
@@ -51,7 +53,7 @@ const HomePageMovie = () => {
                         >
                             <div className="hMovie__img">
                                 <img
-                                    className="h-[370px] w-full"
+                                    className="h-[400px] w-full"
                                     src={item?.hinhAnh}
                                     alt="img"
                                 />
@@ -60,13 +62,12 @@ const HomePageMovie = () => {
                                         <i className="fa-solid fa-play"></i>
                                     </Button>
                                     <Modal
+                                        title="Basic Modal"
                                         open={isModalOpen}
                                         onOk={handleOk}
                                         onCancel={handleCancel}
                                     >
-                                        <div>
-                                            {/* Trailer Movie */}
-                                        </div>
+                                        {/* Modal Video */}
                                     </Modal>
                                 </div>
                             </div>
