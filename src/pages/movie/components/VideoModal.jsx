@@ -10,6 +10,8 @@ export default function VideoModal({ setOpenModal }) {
     (event) => {
       if (event.target === divElement.current) {
         setOpenModal?.(false);
+
+        //abc
       }
     },
     [setOpenModal]
