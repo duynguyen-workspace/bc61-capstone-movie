@@ -12,6 +12,8 @@ import { getMovieDetailApi } from "../../api/movie.api";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 import Ticket from "./components/Ticket";
+import { createPortal } from "react-dom";
+import Booking from "../booking/Booking";
 
 const INIT_MOVIE = {
   biDanh: "",
@@ -32,6 +34,13 @@ export const TrailerContext = createContext("");
 const Movie = () => {
   let { movieId } = useParams();
   const [movieDetail, setMovieDetail] = useState(INIT_MOVIE);
+  const [openModal, setOpenModal] = useState(false);
+  const [maLichChieu, setMaLichChieu] = useState("");
+  console.log(maLichChieu);
+
+  const handleBookingModal = useCallback(() => {
+    setOpenModal((prev) => !prev);
+  }, []);
 
   const formatMovieDate = useMemo(() => {
     if (!movieDetail.ngayKhoiChieu) {
@@ -66,7 +75,7 @@ const Movie = () => {
   }, [getMovieDetail, movieId]);
 
   return (
-    <div>
+    <div id="movie-main">
       <TrailerContext.Provider value={getTrailerCode}>
         <Banner pics={movieDetail.hinhAnh} />
       </TrailerContext.Provider>
@@ -136,9 +145,22 @@ const Movie = () => {
         </div>
 
         <div className="bg-[#001232]">
-          <Ticket movieId={movieId} />
+          <Ticket
+            movieId={movieId}
+            handleBookingModal={handleBookingModal}
+            setMaLichChieu={setMaLichChieu}
+          />
         </div>
       </div>
+      {maLichChieu &&
+        openModal &&
+        createPortal(
+          <Booking
+            handleBookingModal={handleBookingModal}
+            maLichChieu={maLichChieu}
+          />,
+          document.body
+        )}
     </div>
   );
 };
