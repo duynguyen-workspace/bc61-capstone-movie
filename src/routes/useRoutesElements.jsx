@@ -6,6 +6,7 @@ import MainLayout from "../layouts/MainLayout";
 import AdminLayout from "../layouts/AdminLayout";
 import AuthLayout from "../layouts/AuthLayout";
 import ListMovie from "../components/ListMovie/ListMovie";
+import Theater from "../components/Theater/Theater";
 
 const HomePage = lazy(() => import("../pages/home"));
 const LoginPage = lazy(() => import("../pages/auth/Login"));
@@ -174,6 +175,14 @@ const useRoutesElements = () => {
                     element: (
                         <Suspense fallback={<div>Loading...</div>}>
                             <ListMovie />
+                        </Suspense>
+                    ),
+                },
+                {
+                    path: paths.THEATER,
+                    element: (
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Theater />
                         </Suspense>
                     ),
                 },

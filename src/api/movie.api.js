@@ -56,3 +56,9 @@ export const Banner = {
         return fetcher.get("/QuanLyPhim/LayDanhSachBanner");
     },
 };
+
+export const Movie = {
+    getMovieApi: () => {
+        return fetcher.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
+    },
+};

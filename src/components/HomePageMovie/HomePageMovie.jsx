@@ -3,6 +3,7 @@ import "./homePageMovie.scss";
 import { homePageService } from "../../api/homePage";
 import { Link } from "react-router-dom";
 import { Button, Modal } from "antd";
+import paths from "../../paths";
 
 const HomePageMovie = () => {
     const [arrMoviePagination, setArrMoviePagination] = useState([]);
@@ -38,7 +39,10 @@ const HomePageMovie = () => {
                 <h2 className="text-white text-5xl font-bold leading-10">
                     MOVIES
                 </h2>
-                <Link className="hMovie__viewAll text-[#31d7a9] font-bold text-2xl">
+                <Link
+                    to={paths.LIST_MOVIES}
+                    className="hMovie__viewAll text-[#31d7a9] font-bold text-2xl"
+                >
                     View All
                 </Link>
             </div>
