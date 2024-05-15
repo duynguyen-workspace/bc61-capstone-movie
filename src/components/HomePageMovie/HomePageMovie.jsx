@@ -19,7 +19,6 @@ const HomePageMovie = () => {
                 console.log(err);
             });
     }, []);
-    // console.log(arrMoviePagination);
     // Modal
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {

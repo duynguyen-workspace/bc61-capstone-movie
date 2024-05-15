@@ -50,3 +50,9 @@ export const getTicketApi = async (id) => {
         throw new Error(exception);
     }
 };
+
+export const Banner = {
+    getBannerApi: () => {
+        return fetcher.get("/QuanLyPhim/LayDanhSachBanner");
+    },
+};
