@@ -25,6 +25,13 @@
             position: relative;
             z-index: 9;
             text-align: center;
+            h1 {
+                font-size: 4.4rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                margin-bottom: 18px;
+                line-height: 1.1;
+            }
         }
     }
 }

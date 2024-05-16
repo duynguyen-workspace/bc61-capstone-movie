@@ -1,7 +1,7 @@
 .home__search {
     position: relative;
-    max-width: 1170px;
     margin: 0 auto;
+    max-width: 1170px;
     margin-top: -150px;
     z-index: 9;
     .hsearch__container {
@@ -71,43 +71,40 @@
                 .hsearchBar__form {
                     display: flex;
                     justify-content: space-around;
-                    .form__group {
+                    .form__search {
                         display: flex;
-                        align-items: center;
-                        margin-bottom: 20px;
+                        .form__group {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 20px;
+                            margin-left: 40px;
+                            position: relative;
+                            i,
+                            span {
+                                margin-right: 10px;
+                            }
+                            .icon__search {
+                                font-size: 3rem;
+                                color: #a7b9f4;
+                            }
+                            span {
+                                font-size: 1.2rem;
+                                color: #31d7a9;
+                                margin-right: 13px;
+                            }
+                            select {
+                                @apply text-white;
+                                background: transparent;
+                                border: none;
+                            }
+                        }
+                    }
+                    .form__submit {
                         position: relative;
-                        i,
-                        span {
-                            margin-right: 10px;
-                        }
-                        .icon__search {
-                            font-size: 3rem;
-                            color: #a7b9f4;
-                        }
-                        span {
-                            font-size: 1.2rem;
-                            color: #31d7a9;
-                            margin-right: 13px;
-                        }
-                        select {
-                            @apply text-white;
-                            background: transparent;
-                            border: none;
-                        }
-
-                        .hsearch__input {
-                            border: none;
-                            border-bottom: 1px solid #9eb1eb;
-                            border-radius: 0;
-                            padding: 0;
-                            height: 45px;
-                            padding-right: 50px;
-                            background: transparent;
-                            // width: 100%;;
-                        }
-                        .btn__submit {
-                            position: absolute;
-                            right: 0;
+                        button {
+                            &:hover {
+                                background: rgb(87, 87, 253);
+                            }
                         }
                     }
                 }
@@ -120,7 +117,7 @@
 // max-width: 1200px
 @media only screen and (max-width: 1200px) {
     .home__search {
-        max-width: 960px;
+        max-width: 1000px;
         .hsearch__container {
             .hsearch__header {
                 .hsearch__second {
@@ -134,10 +131,9 @@
     }
 }
 
-// max-width: 991px
-@media only screen and (max-width: 991px) {
+// max-width: 1024px
+@media only screen and (max-width: 1024px) {
     .home__search {
-        max-width: 720px;
         .hsearch__container {
             .hsearch__header {
                 display: block;
@@ -145,6 +141,39 @@
                     margin-left: -15px;
                     display: flex;
                     justify-content: space-around;
+                    button {
+                        @apply py-4 px-12;
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            .hsearch__bar {
+                .hsearchBar__item {
+                    .hsearchBar__form {
+                        display: block;
+                        .form__search {
+                            justify-content: space-between;
+                        }
+                        .form__submit {
+                            max-width: 100%;
+                            button {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// max-width: 991px
+@media only screen and (max-width: 991px) {
+    .home__search {
+        max-width: 800px;
+        .hsearch__container {
+            .hsearch__header {
+                .hsearch__second {
                     button {
                         @apply py-4 px-10;
                         font-size: 1.4rem;
@@ -154,9 +183,13 @@
             .hsearch__bar {
                 .hsearchBar__item {
                     .hsearchBar__form {
-                        display: block;
-                        .large {
-                            width: 100%;
+                        .form__search {
+                            justify-content: space-around;
+                            .form__group {
+                                .icon__search {
+                                    font-size: 2rem;
+                                }
+                            }
                         }
                     }
                 }
@@ -168,7 +201,6 @@
 // max-width: 768px
 @media only screen and (max-width: 768px) {
     .home__search {
-        max-width: 540px;
         .hsearch__container {
             .hsearch__header {
                 .hsearch__second {
@@ -176,6 +208,32 @@
                     button {
                         font-size: 1.4rem;
                         @apply py-3 px-7;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// max-width: 700px
+@media only screen and (max-width: 700px) {
+    .home__search {
+        .hsearch__container {
+            .hsearch__bar {
+                .hsearchBar__item {
+                    .hsearchBar__form {
+                        .form__search {
+                            flex-direction: column;
+                            align-items: center;
+                            .form__group {
+                                .icon__search {
+                                    font-size: 2.5rem;
+                                }
+                                span {
+                                    font-size: 1.7rem;
+                                }
+                            } 
+                        }
                     }
                 }
             }

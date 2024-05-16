@@ -1,7 +1,7 @@
 import "./homePageSearch.scss";
 const HomePageSearch = () => {
     return (
-        <div className="home__search container mx-auto">
+        <div className="home__search">
             <div className="hsearch__container">
                 <div className="hsearch__header">
                     <div className="hsearch__first uppercase">
@@ -37,35 +37,35 @@ const HomePageSearch = () => {
                 <div className="hsearch__bar">
                     <div className="hsearchBar__item">
                         <form className="hsearchBar__form">
-                            <div className="form__group">
-                                <i className="fa-solid fa-clapperboard icon__search"></i>
-                                <span>Movie</span>
-                                <select name="movie">
-                                    <option value="film">Film</option>
-                                </select>
+                            <div className="form__search">
+                                <div className="form__group">
+                                    <i className="fa-solid fa-clapperboard icon__search"></i>
+                                    <span>Movie</span>
+                                    <select name="movie">
+                                        <option value="film">Film</option>
+                                    </select>
+                                </div>
+                                <div className="form__group">
+                                    <i className="fa-solid fa-masks-theater icon__search"></i>
+                                    <span>Theater</span>
+                                    <select name="movie">
+                                        <option value="theater">Theater</option>
+                                    </select>
+                                </div>
+                                <div className="form__group">
+                                    <i className="fa-solid fa-calendar-days icon__search"></i>
+                                    <span>Date</span>
+                                    <select name="movie">
+                                        <option value="film">Date</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div className="form__group">
-                                <i className="fa-solid fa-masks-theater icon__search"></i>
-                                <span>Theater</span>
-                                <select name="movie">
-                                    <option value="theater">Theater</option>
-                                </select>
-                            </div>
-                            <div className="form__group">
-                                <i className="fa-solid fa-calendar-days icon__search"></i>
-                                <span>Date</span>
-                                <select name="movie">
-                                    <option value="film">Date</option>
-                                </select>
-                            </div>
-                            <div className="form__group large">
-                                <input
-                                    className="hsearch__input text-white"
-                                    type="text"
-                                    placeholder="Search for movies"
-                                />
-                                <button type="submit" className="btn__submit">
-                                    <i className="fa-solid fa-magnifying-glass text-white"></i>
+                            <div className="form__submit">
+                                <button
+                                    type="submit"
+                                    className="btn__submit px-10 py-4 rounded-md bg-blue-500 text-white text-lg"
+                                >
+                                    Book Ticket
                                 </button>
                             </div>
                         </form>

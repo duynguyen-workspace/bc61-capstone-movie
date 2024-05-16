@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./homePageMovie.scss";
 import { homePageService } from "../../api/homePage";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button, Modal } from "antd";
 import paths from "../../paths";
 
@@ -99,9 +99,12 @@ const HomePageMovie = () => {
                                 </div>
                             </div>
                             <div className="view__detail">
-                                <button className="bg-yellow-500 rounded-md py-3 text-xl">
+                                <NavLink
+                                    to={`${paths.MOVIE_DETAIL}/${item.maPhim}`}
+                                    className="bg-yellow-500 rounded-md py-3 text-xl"
+                                >
                                     View Detail
-                                </button>
+                                </NavLink>
                             </div>
                         </div>
                     );
