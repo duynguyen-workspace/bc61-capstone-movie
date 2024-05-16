@@ -76,7 +76,9 @@ const useRoutesElements = () => {
     },
     {
       path: "",
-      element: <BookingRouter />,
+      // element: <BookingRouter />,
+      element: <AuthLayout />,
+
       children: [
         {
           path: paths.BOOKING,

@@ -5,7 +5,7 @@ import TabComponent from "./Tab";
 import { getTicketApi } from "../../../api/movie.api";
 
 // eslint-disable-next-line react/prop-types
-const Ticket = ({ movieId }) => {
+const Ticket = ({ movieId, handleBookingModal, setMaLichChieu }) => {
   const [arrRap, setArrRap] = useState([]);
   console.log(arrRap);
 
@@ -29,7 +29,7 @@ const Ticket = ({ movieId }) => {
           <Tabs
             centered
             tabPosition="top"
-            items={map(arrRap, (rap, i) => {
+            items={map(arrRap, (rap) => {
               return {
                 label: (
                   <img
@@ -39,7 +39,13 @@ const Ticket = ({ movieId }) => {
                   />
                 ),
                 key: uniqueId("tab_"),
-                children: <TabComponent cumRapChieu={rap.cumRapChieu} />,
+                children: (
+                  <TabComponent
+                    cumRapChieu={rap.cumRapChieu}
+                    handleBookingModal={handleBookingModal}
+                    setMaLichChieu={setMaLichChieu}
+                  />
+                ),
               };
             })}
           />

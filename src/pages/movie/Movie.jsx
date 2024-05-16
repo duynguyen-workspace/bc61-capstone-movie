@@ -12,6 +12,8 @@ import { getMovieDetailApi } from "../../api/movie.api";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 import Ticket from "./components/Ticket";
+import { createPortal } from "react-dom";
+import Booking from "../booking/Booking";
 
 const INIT_MOVIE = {
   biDanh: "",
@@ -32,6 +34,13 @@ export const TrailerContext = createContext("");
 const Movie = () => {
   let { movieId } = useParams();
   const [movieDetail, setMovieDetail] = useState(INIT_MOVIE);
+  const [openModal, setOpenModal] = useState(false);
+  const [maLichChieu, setMaLichChieu] = useState("");
+  console.log(maLichChieu);
+
+  const handleBookingModal = useCallback(() => {
+    setOpenModal((prev) => !prev);
+  }, []);
 
   const formatMovieDate = useMemo(() => {
     if (!movieDetail.ngayKhoiChieu) {
@@ -61,12 +70,21 @@ const Movie = () => {
     const res = await getMovieDetailApi(movieId);
     setMovieDetail(res);
   }, [movieId]);
+
+  const handleClickScroll = useCallback(() => {
+    const element = document.getElementById("datVe");
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
   useEffect(() => {
     getMovieDetail();
   }, [getMovieDetail, movieId]);
 
   return (
-    <div>
+    <div id="movie-main">
       <TrailerContext.Provider value={getTrailerCode}>
         <Banner pics={movieDetail.hinhAnh} />
       </TrailerContext.Provider>
@@ -122,7 +140,7 @@ const Movie = () => {
             </div>
           </div>
           <div className="bg-[#032055] overflow-hidden border-2 border-solid border-[#17305f] lg:absolute w-full lg:bottom-0 lg:translate-y-[-65px]">
-            <Evaluation />
+            <Evaluation handleClickScroll={handleClickScroll} />
           </div>
         </div>
 
@@ -135,10 +153,23 @@ const Movie = () => {
           </div>
         </div>
 
-        <div className="bg-[#001232]">
-          <Ticket movieId={movieId} />
+        <div className="bg-[#001232]" id="datVe">
+          <Ticket
+            movieId={movieId}
+            handleBookingModal={handleBookingModal}
+            setMaLichChieu={setMaLichChieu}
+          />
         </div>
       </div>
+      {maLichChieu &&
+        openModal &&
+        createPortal(
+          <Booking
+            handleBookingModal={handleBookingModal}
+            maLichChieu={maLichChieu}
+          />,
+          document.body
+        )}
     </div>
   );
 };

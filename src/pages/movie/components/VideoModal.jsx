@@ -1,6 +1,7 @@
-import React, { useCallback, useContext, useEffect, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { TrailerContext } from "../Movie";
 
+// eslint-disable-next-line react/prop-types
 export default function VideoModal({ setOpenModal }) {
   const divElement = useRef(null);
   const trailer = useContext(TrailerContext);
