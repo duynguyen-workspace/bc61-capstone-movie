@@ -37,16 +37,6 @@ const HomePageSearch = () => {
                 <div className="hsearch__bar">
                     <div className="hsearchBar__item">
                         <form className="hsearchBar__form">
-                            <div className="form__group large">
-                                <input
-                                    className="hsearch__input text-white"
-                                    type="text"
-                                    placeholder="Search for movies"
-                                />
-                                <button type="submit" className="btn__submit">
-                                    <i className="fa-solid fa-magnifying-glass text-white"></i>
-                                </button>
-                            </div>
                             <div className="form__group">
                                 <i className="fa-solid fa-clapperboard icon__search"></i>
                                 <span>Movie</span>
@@ -67,6 +57,16 @@ const HomePageSearch = () => {
                                 <select name="movie">
                                     <option value="film">Date</option>
                                 </select>
+                            </div>
+                            <div className="form__group large">
+                                <input
+                                    className="hsearch__input text-white"
+                                    type="text"
+                                    placeholder="Search for movies"
+                                />
+                                <button type="submit" className="btn__submit">
+                                    <i className="fa-solid fa-magnifying-glass text-white"></i>
+                                </button>
                             </div>
                         </form>
                     </div>

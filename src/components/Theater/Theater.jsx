@@ -1,3 +1,4 @@
+import ShowTimeSystem from "../ShowTimeSystem/ShowTimeSystem";
 import "./theater.scss";
 const Theater = () => {
     return (
@@ -14,6 +15,9 @@ const Theater = () => {
                         showtime
                     </p>
                 </div>
+            </div>
+            <div className="theater__system container mx-auto">
+                <ShowTimeSystem />
             </div>
         </div>
     );

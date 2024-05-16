@@ -72,7 +72,7 @@ const ListMovie = () => {
                 >
                     {arrBanner.map((item, index) => {
                         return (
-                            <div key={index} className="h-[87vh]">
+                            <div key={index} className="h-[90vh]">
                                 <img
                                     className="h-full w-full "
                                     src={item?.hinhAnh}
