@@ -8,10 +8,10 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   font-family: "Open Sans Variable", sans-serif !important;
-  box-sizing: border-box;
   position: relative;
+  overflow-x: hidden;
 }
 
 @layer utilities {
