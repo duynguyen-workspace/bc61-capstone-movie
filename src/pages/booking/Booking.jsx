@@ -197,6 +197,20 @@ const Booking = ({ maLichChieu, handleBookingModal }) => {
                   <div className="flex flex-wrap">{renderGhe}</div>
                 </div>
               </div>
+              <div className="flex justify-center gap-[40px] mt-3">
+                <div className="flex align-middle">
+                  <span className="rounded-[4px] text-[8px] border-white border border-solid py-1 px-3 me-2"></span>
+                  <span>Ghế trống</span>
+                </div>
+                <div className="flex align-middle">
+                  <span className="rounded-[4px] text-[8px] border-red-500 border border-solid py-1 px-3 me-2"></span>
+                  <span>Ghế VIP</span>
+                </div>
+                <div className="flex align-middle">
+                  <span className="rounded-[4px] text-[8px] border-white border border-solid py-1 px-3 me-2 opacity-[0.2]"></span>
+                  <span>Ghế đã đặt</span>
+                </div>
+              </div>
             </div>
             <div className="my-5 pb-1 px-[10px] basis-0 grow-[1]">
               <div className="text-center text-[20px] text-[#31d7a9]  my-5 font-bold">

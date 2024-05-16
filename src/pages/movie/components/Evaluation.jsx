@@ -2,7 +2,8 @@ import React from "react";
 import TomatoImg from "../../../assets/images/tomato2.png";
 import CakeImg from "../../../assets/images/cake2.png";
 
-export default function Evaluation() {
+// eslint-disable-next-line react/prop-types
+export default function Evaluation({ handleClickScroll }) {
   return (
     <div className=" mt-5 py-4 container-me lg:flex lg:justify-end">
       <div className="lg:w-fit">
@@ -51,7 +52,10 @@ export default function Evaluation() {
           </div>
         </div>
         <div className="bookTickets mt-10 mb-4 text-center">
-          <span className="text-white text-[16px] font-bold rounded-[25px] buttonGradient py-[11px] px-[24px] cursor-pointer hover:shadow-[0px_10px_15px_0px_rgba(59,55,188,0.5)]">
+          <span
+            className="text-white text-[16px] font-bold rounded-[25px] buttonGradient py-[11px] px-[24px] cursor-pointer hover:shadow-[0px_10px_15px_0px_rgba(59,55,188,0.5)]"
+            onClick={handleClickScroll}
+          >
             BOOK TICKETS
           </span>
         </div>

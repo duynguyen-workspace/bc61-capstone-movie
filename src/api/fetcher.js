@@ -18,7 +18,6 @@ fetcher.interceptors.request.use((config) => {
 
   //* Thêm Authorization vào header
   if (user) {
-    // config.headers["Authorization"] = user.accessToken;
     config.headers["Authorization"] = user.accessToken;
   }
 

@@ -70,6 +70,15 @@ const Movie = () => {
     const res = await getMovieDetailApi(movieId);
     setMovieDetail(res);
   }, [movieId]);
+
+  const handleClickScroll = useCallback(() => {
+    const element = document.getElementById("datVe");
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
   useEffect(() => {
     getMovieDetail();
   }, [getMovieDetail, movieId]);
@@ -131,7 +140,7 @@ const Movie = () => {
             </div>
           </div>
           <div className="bg-[#032055] overflow-hidden border-2 border-solid border-[#17305f] lg:absolute w-full lg:bottom-0 lg:translate-y-[-65px]">
-            <Evaluation />
+            <Evaluation handleClickScroll={handleClickScroll} />
           </div>
         </div>
 
@@ -144,7 +153,7 @@ const Movie = () => {
           </div>
         </div>
 
-        <div className="bg-[#001232]">
+        <div className="bg-[#001232]" id="datVe">
           <Ticket
             movieId={movieId}
             handleBookingModal={handleBookingModal}
