@@ -4,6 +4,9 @@ import { homePageService } from "../../api/homePage";
 import { Link, NavLink } from "react-router-dom";
 import { Button, Modal } from "antd";
 import paths from "../../paths";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const HomePageMovie = () => {
     const [arrMoviePagination, setArrMoviePagination] = useState([]);
@@ -32,6 +35,61 @@ const HomePageMovie = () => {
         setIsModalOpen(false);
     };
 
+    // Custome Arrow React Slick
+    const PrevArrow = (props) => {
+        const { className, style, onClick } = props;
+        return (
+            <div className={className} style={style} onClick={onClick}>
+                <i className="fa-solid fa-angle-left"></i>
+            </div>
+        );
+    };
+    const NextArrow = (props) => {
+        const { className, style, onClick } = props;
+        return (
+            <div className={className} style={style} onClick={onClick}>
+                <i className="fa-solid fa-angle-right"></i>
+            </div>
+        );
+    };
+
+    // Setting Slick Carousel For Movie Pagination HomePage
+    let settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true,
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    initialSlide: 2,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    };
     return (
         <div className="hMovie__container">
             {/* HomePage Movie Header */}
@@ -47,68 +105,73 @@ const HomePageMovie = () => {
                 </Link>
             </div>
             {/* HomePage Movie List Pagnitration */}
-            <div className="hMovie__item grid grid-cols-3 gap-7">
-                {arrMoviePagination.map((item, index) => {
-                    return (
-                        <div
-                            className="text-white hMovie__item__contain"
-                            key={index}
-                        >
-                            <div className="hMovie__img">
-                                <img
-                                    className="h-[400px] w-full"
-                                    src={item?.hinhAnh}
-                                    alt="img"
-                                />
-                                <div className="hMovie__icon">
-                                    <Button type="primary" onClick={showModal}>
-                                        <i className="fa-solid fa-play"></i>
-                                    </Button>
-                                    <Modal
-                                        title="Basic Modal"
-                                        open={isModalOpen}
-                                        onOk={handleOk}
-                                        onCancel={handleCancel}
+            <div className="hMovie__item">
+                <Slider {...settings}>
+                    {arrMoviePagination.map((item, index) => {
+                        return (
+                            <div
+                                className="text-white hMovie__item__contain"
+                                key={index}
+                            >
+                                <div className="hMovie__img">
+                                    <img
+                                        className="h-[400px] w-full"
+                                        src={item?.hinhAnh}
+                                        alt="img"
+                                    />
+                                    <div className="hMovie__icon">
+                                        <Button
+                                            type="primary"
+                                            onClick={showModal}
+                                        >
+                                            <i className="fa-solid fa-play"></i>
+                                        </Button>
+                                        <Modal
+                                            title="Basic Modal"
+                                            open={isModalOpen}
+                                            onOk={handleOk}
+                                            onCancel={handleCancel}
+                                        >
+                                            {/* Modal Video */}
+                                        </Modal>
+                                    </div>
+                                </div>
+                                <div className="hMovie__content">
+                                    <div className="hMContent__title flex items-center ">
+                                        <span className="text-white bg-blue-600 py-2 px-3 rounded-md mr-6">
+                                            C18
+                                        </span>
+                                        <span className="text-white text-[1.5rem] line-clamp-1">
+                                            {item?.tenPhim}
+                                        </span>
+                                    </div>
+                                    <div className="hMovie__rating flex justify-evenly items-center mt-3 pb-4">
+                                        <div>
+                                            <i className="fa-solid fa-thumbs-up text-yellow-500 text-2xl mr-3"></i>
+                                            <span className="font-semibold">
+                                                88%{" "}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <i className="fa-solid fa-fire text-red-500 text-2xl mr-3"></i>
+                                            <span className="font-semibold">
+                                                88%
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="view__detail">
+                                    <NavLink
+                                        to={`${paths.MOVIE_DETAIL}/${item.maPhim}`}
+                                        className="bg-yellow-500 rounded-md py-3 text-xl"
                                     >
-                                        {/* Modal Video */}
-                                    </Modal>
+                                        View Detail
+                                    </NavLink>
                                 </div>
                             </div>
-                            <div className="hMovie__content">
-                                <div className="hMContent__title flex items-center ">
-                                    <span className="text-white bg-blue-600 py-2 px-3 rounded-md mr-6">
-                                        C18
-                                    </span>
-                                    <span className="text-white text-[1.5rem] line-clamp-1">
-                                        {item?.tenPhim}
-                                    </span>
-                                </div>
-                                <div className="hMovie__rating flex justify-evenly items-center mt-3 pb-4">
-                                    <div>
-                                        <i className="fa-solid fa-thumbs-up text-yellow-500 text-2xl mr-3"></i>
-                                        <span className="font-semibold">
-                                            88%{" "}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <i className="fa-solid fa-fire text-red-500 text-2xl mr-3"></i>
-                                        <span className="font-semibold">
-                                            88%
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="view__detail">
-                                <NavLink
-                                    to={`${paths.MOVIE_DETAIL}/${item.maPhim}`}
-                                    className="bg-yellow-500 rounded-md py-3 text-xl"
-                                >
-                                    View Detail
-                                </NavLink>
-                            </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </Slider>
             </div>
         </div>
     );

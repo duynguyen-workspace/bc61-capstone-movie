@@ -31,19 +31,50 @@
             .view__detail {
                 display: none;
             }
+            // Custome Arrow Slick Carousel
+            .slick-slider {
+                .slick-slide > div {
+                    margin: 30px 20px;
+                }
+                .slick-prev:before,
+                .slick-next:before {
+                    display: none;
+                }
+                .slick-arrow {
+                    color: white;
+                    font-size: 50px;
+                    &:hover {
+                        color: rgb(161, 161, 161);
+                    }
+                }
+                .slick-prev {
+                    left: -55px;
+                }
+                .slick-next {
+                    right: -46px;
+                }
+                .slick-dots li button:before {
+                    color: white;
+                }
+            }
+
             // Hover vào movie
             .hMovie__item__contain {
+                display: block !important;
+                height: 600px;
                 &:hover {
                     .view__detail {
                         display: inline-block;
                         margin-top: 10px;
                         width: 100%;
-                        button {
+                        a {
+                            display: block;
+                            text-align: center;
                             width: 100%;
                         }
                     }
                     .hMovie__content {
-                        display: none;
+                        opacity: 0;
                     }
                     .hMovie__img {
                         &::before {
@@ -104,6 +135,30 @@
                     padding: 23px 0;
                     text-transform: capitalize;
                     border-bottom: 1px dashed #11326f;
+                }
+            }
+        }
+    }
+}
+
+// Responsive
+@media only screen and (max-width: 600px) {
+    .list__movie {
+        .lBanner__container {
+            .banner__img {
+                height: 70vh;
+            }
+        }
+        .lmovie__container {
+            .lMovie__item {
+                .hMovie__item__contain {
+                    height: 480px;
+                    .hMovie__img {
+                        height: 300px;
+                        img {
+                            height: 100%;
+                        }
+                    }
                 }
             }
         }
