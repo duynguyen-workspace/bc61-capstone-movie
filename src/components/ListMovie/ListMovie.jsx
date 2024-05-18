@@ -10,6 +10,7 @@ import paths from "../../paths";
 
 const PrevArrow = (props) => {
     const { className, style, onClick } = props;
+
     return (
         <div className={className} style={style} onClick={onClick}>
             <i className="fa-solid fa-angle-left"></i>
@@ -63,7 +64,9 @@ const settings = {
 const ListMovie = () => {
     let [arrBanner, setArrBanner] = useState([]);
     let [arrMovie, setArrMovie] = useState([]);
-    console.log(arrMovie);
+    let [movieTrailer, getMovieTrailer] = useState("");
+    // console.log(movieTrailer);
+    // console.log(arrMovie);
     useEffect(() => {
         // lấy API Banner
         Banner.getBannerApi()
@@ -98,6 +101,11 @@ const ListMovie = () => {
     };
     const handleCancel = () => {
         setIsModalOpen(false);
+    };
+    // Hàm sửa dữ liệu trailer từ watch -> embed
+    const EditLinkTrailer = (link, watch) => {
+        let trailer = link.replace(watch, "embed/");
+        getMovieTrailer(trailer);
     };
     return (
         <div className="list__movie">
@@ -141,16 +149,32 @@ const ListMovie = () => {
                                         <div className="hMovie__icon">
                                             <Button
                                                 type="primary"
-                                                onClick={showModal}
+                                                onClick={() => {
+                                                    showModal();
+                                                    EditLinkTrailer(
+                                                        item?.trailer,
+                                                        "watch?v="
+                                                    );
+                                                }}
                                             >
                                                 <i className="fa-solid fa-play"></i>
                                             </Button>
                                             <Modal
-                                                title="Basic Modal"
+                                                title="Trailer"
                                                 open={isModalOpen}
                                                 onOk={handleOk}
                                                 onCancel={handleCancel}
+                                                footer={false}
+                                                width={650}
                                             >
+                                                <iframe
+                                                    width="600"
+                                                    height="315"
+                                                    src={movieTrailer}
+                                                    title="YouTube video player"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen
+                                                ></iframe>
                                                 {/* Modal Video */}
                                             </Modal>
                                         </div>

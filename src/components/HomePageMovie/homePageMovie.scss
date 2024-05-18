@@ -29,7 +29,8 @@
             .slick-slide > div {
                 margin: 0 10px;
             }
-            .slick-prev:before, .slick-next:before {
+            .slick-prev:before,
+            .slick-next:before {
                 display: none;
             }
             .slick-arrow {
@@ -123,3 +124,4 @@
         }
     }
 }
+

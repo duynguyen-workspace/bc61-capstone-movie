@@ -10,7 +10,9 @@ import Slider from "react-slick";
 
 const HomePageMovie = () => {
     const [arrMoviePagination, setArrMoviePagination] = useState([]);
-
+    let [movieTrailer, getMovieTrailer] = useState("");
+    // console.log(movieTrailer);
+    // console.log(arrMoviePagination);
     useEffect(() => {
         homePageService
             .moviePagination()
@@ -90,6 +92,12 @@ const HomePageMovie = () => {
             },
         ],
     };
+
+    // Hàm sửa dữ liệu trailer từ watch -> embed
+    const EditLinkTrailer = (link, watch) => {
+        let trailer = link.replace(watch, "embed/");
+        getMovieTrailer(trailer);
+    };
     return (
         <div className="hMovie__container">
             {/* HomePage Movie Header */}
@@ -122,16 +130,33 @@ const HomePageMovie = () => {
                                     <div className="hMovie__icon">
                                         <Button
                                             type="primary"
-                                            onClick={showModal}
+                                            onClick={() => {
+                                                showModal();
+                                                EditLinkTrailer(
+                                                    item?.trailer,
+                                                    "watch?v="
+                                                );
+                                            }}
                                         >
                                             <i className="fa-solid fa-play"></i>
                                         </Button>
+                                        <div></div>
                                         <Modal
-                                            title="Basic Modal"
+                                            title="Trailer"
                                             open={isModalOpen}
                                             onOk={handleOk}
                                             onCancel={handleCancel}
+                                            footer={false}
+                                            width={650}
                                         >
+                                            <iframe
+                                                width="600"
+                                                height="315"
+                                                src={movieTrailer}
+                                                title="YouTube video player"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen
+                                            ></iframe>
                                             {/* Modal Video */}
                                         </Modal>
                                     </div>
