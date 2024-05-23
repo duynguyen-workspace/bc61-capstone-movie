@@ -50,3 +50,13 @@ export const getTicketApi = async (id) => {
     throw new Error(exception);
   }
 };
+
+export const quanLyPhim = {
+  themPhimUpLoadHinh: (data) => {
+    return fetcher.post("/QuanLyPhim/ThemPhimUploadHinh", data);
+  },
+
+  xoaPhim: (maPhim) => {
+    return fetcher.delete(`/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
+  },
+};

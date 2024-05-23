@@ -5,6 +5,7 @@ import paths from "../paths";
 import MainLayout from "../layouts/MainLayout";
 import AdminLayout from "../layouts/AdminLayout";
 import AuthLayout from "../layouts/AuthLayout";
+import CreateFilm from "../pages/managers/CreateFilm";
 
 const HomePage = lazy(() => import("../pages/home"));
 const LoginPage = lazy(() => import("../pages/auth/Login"));
@@ -38,7 +39,7 @@ const BookingRouter = () => {
 
 const AdminRouter = () => {
   // user's authentication for admin access
-  let isAuthenticated = false;
+  let isAuthenticated = true;
 
   return isAuthenticated ? <Outlet /> : <Navigate to={"/401"} />;
 };
@@ -125,6 +126,14 @@ const useRoutesElements = () => {
               element: (
                 <Suspense fallback={<div>Loading...</div>}>
                   <ShowtimeManagerPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: "create",
+              element: (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <CreateFilm />
                 </Suspense>
               ),
             },
