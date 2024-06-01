@@ -4,9 +4,11 @@ import { NavLink } from "react-router-dom";
 import paths from "../../paths";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import DropDownProfile from "../DropDownProfile/DropDownProfile";
 const Header = () => {
+    const [openProfile, setOpenProfile] = useState(false);
     const { users } = useSelector((state) => state.users);
-    console.log(users);
+    // console.log(users);
 
     // Scroll down Header sẽ đổi từ màu transparent thành màu xanh
     const [navbar, setNavBar] = useState(false);
@@ -72,10 +74,22 @@ const Header = () => {
                             />
                         </NavLink>
                         {users ? (
-                            <div className=" text-2xl font-bold text-orange-400">
-                                <span>Hello, </span>
-                                {users.taiKhoan}
-                            </div>
+                            <>
+                                {" "}
+                                <div className="relative">
+                                    <div
+                                        className="text-2xl font-bold text-white cursor-pointer"
+                                        onClick={() => {
+                                            setOpenProfile(!openProfile);
+                                        }}
+                                    >
+                                        <span>Hello, </span>
+                                        <i className="fa-regular fa-circle-user ml-3 mr-2"></i>
+                                        {users.taiKhoan}
+                                    </div>
+                                    {openProfile && <DropDownProfile />}
+                                </div>
+                            </>
                         ) : (
                             <>
                                 {" "}
@@ -94,7 +108,9 @@ const Header = () => {
                                         {/* <i className="fa-regular fa-circle-user text-3xl text-gray-300 mr-3"></i> */}
                                         Log in
                                     </NavLink>
-                                    <span className="text-gray-300 text-2xl mx-5 "></span>
+                                    <span className="text-gray-300 text-2xl mx-5">
+                                        I
+                                    </span>
 
                                     <NavLink
                                         to={paths.REGISTER}
