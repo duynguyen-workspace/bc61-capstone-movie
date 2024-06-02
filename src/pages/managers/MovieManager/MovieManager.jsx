@@ -57,7 +57,7 @@ const MovieManager = () => {
     },
 
     {
-      title: "Mô tả",
+      title: "Đánh giá",
       dataIndex: "danhGia",
       render: (text) => {
         return (
@@ -69,8 +69,32 @@ const MovieManager = () => {
       },
     },
     {
-      title: "Status",
+      title: "Đang chiếu",
       dataIndex: "dangChieu",
+      render: (text) => {
+        return text == true ? (
+          <span className="text-green-500">True</span>
+        ) : (
+          <span className="text-red-500">False</span>
+        );
+      },
+    },
+
+    {
+      title: "Sắp Chiếu",
+      dataIndex: "sapChieu",
+      render: (text) => {
+        return text == true ? (
+          <span className="text-green-500">True</span>
+        ) : (
+          <span className="text-red-500">False</span>
+        );
+      },
+    },
+
+    {
+      title: "Hot",
+      dataIndex: "hot",
       render: (text) => {
         return text == true ? (
           <span className="text-green-500">True</span>
@@ -88,7 +112,7 @@ const MovieManager = () => {
               onClick={() => {
                 // console.log(record);
                 dispatch(upDateUser(record));
-                navigate(paths.ADMIN);
+                navigate(`${paths.ADMIN}/create`);
               }}
               className="mx-2"
             >

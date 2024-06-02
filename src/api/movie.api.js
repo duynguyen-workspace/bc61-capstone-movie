@@ -59,4 +59,8 @@ export const quanLyPhim = {
   xoaPhim: (maPhim) => {
     return fetcher.delete(`/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
   },
+
+  capNhatPhim: (movie) => {
+    return fetcher.post("/QuanLyPhim/CapNhatPhimUpload", movie);
+  },
 };

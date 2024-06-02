@@ -1,15 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import InputText from "../../../components/Input/InputText";
 import { useFormik } from "formik";
 import { DatePicker, Rate, Select, Switch } from "antd";
-import { quanLyPhim } from "../../../api/movie.api";
+import { getMoviesApi, quanLyPhim } from "../../../api/movie.api";
 import useMessage from "antd/es/message/useMessage";
 import { AlertMessage } from "../../../App";
 import { useSelector } from "react-redux";
+import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
+import paths from "../../../paths";
 
 const CreateFilm = () => {
   const { user } = useSelector((reducer) => reducer.manage);
   console.log(user);
+  const navigate = useNavigate();
   const { handleAlert } = useContext(AlertMessage);
   const [image, setImage] = useState("");
   const {
@@ -21,6 +25,9 @@ const CreateFilm = () => {
     handleSubmit,
     setFieldValue,
     resetForm,
+    setValues,
+    setTouched,
+    isValid,
   } = useFormik({
     initialValues: {
       tenPhim: "",
@@ -51,12 +58,53 @@ const CreateFilm = () => {
           })
           .catch((err) => {
             console.log(err);
-            handleAlert("error", err.response.data.content);
+            if (err) {
+              handleAlert("error", "Dữ liệu chưa đúng");
+              return;
+            }
           });
       }
       resetForm();
     },
   });
+
+  useEffect(() => {
+    setValues(user);
+    setImage(user.hinhAnh);
+  }, [user]);
+
+  const handleUpdateMovie = () => {
+    const objectTouched = {};
+    for (let key in values) {
+      objectTouched[key] = true;
+    }
+    setTouched(objectTouched);
+    // console.log(isValid);
+    // console.log(values);
+    if (isValid) {
+      // console.log(values);
+      const formData = new FormData();
+      // for (let key in values) {
+      //   if (key == "hinhAnh") {
+      //     formData.append("File", values[key]);
+      //     console.log(formData);
+      //   } else {
+      //     formData.append(key, values[key]);
+      //     console.log(formData);
+      //   }
+      // }
+      quanLyPhim
+        .capNhatPhim(values)
+        .then((res) => {
+          console.log(res);
+          resetForm();
+          navigate(`${paths.ADMIN}/movies`);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
 
   return (
     <div>
@@ -97,6 +145,8 @@ const CreateFilm = () => {
               className="w-full h-20 rounded-lg"
               name="moTa"
               id=""
+              value={values.moTa}
+              onBlur={handleBlur}
             ></textarea>
           </div>
         </div>
@@ -107,6 +157,7 @@ const CreateFilm = () => {
               Lịch chiếu
             </label>
             <DatePicker
+              // value={dayjs(values.ngayKhoiChieu)}
               style={{ width: "100%" }}
               format="DD-MM-YYYY"
               onChange={(date, dateString) => {
@@ -162,6 +213,7 @@ const CreateFilm = () => {
             </label>
             <Rate
               allowHalf
+              value={values.danhGia}
               onChange={(value) => {
                 console.log(value);
                 setFieldValue("danhGia", value);
@@ -199,6 +251,16 @@ const CreateFilm = () => {
               className="py-2 px-5 mt-5 bg-blue-500 rounded"
             >
               Thêm phim
+            </button>
+
+            <button
+              onClick={() => {
+                handleUpdateMovie();
+              }}
+              type="button"
+              className="py-2 px-5 mt-5 bg-yellow-500 rounded"
+            >
+              Cập nhật
             </button>
           </div>
         </div>
