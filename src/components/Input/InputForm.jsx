@@ -12,6 +12,7 @@ const InputForm = ({
   touched,
   errors,
   value,
+  className,
 }) => {
   return (
     <div className="form-input py-2  text-black">
@@ -19,6 +20,7 @@ const InputForm = ({
         <i className={icon}></i>
       </span>
       <input
+        className={className}
         autoComplete="current-password"
         name={name}
         onChange={handleChange}

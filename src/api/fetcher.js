@@ -2,7 +2,7 @@ import axios from "axios";
 import { getLocalStorage } from "../helpers";
 import { LOGIN_USER } from "../constants";
 
-console.log(import.meta.env.VITE_BEARER);
+// console.log(import.meta.env.VITE_BEARER);
 const fetcher = axios.create({
   baseURL: import.meta.env.VITE_URL,
   headers: {

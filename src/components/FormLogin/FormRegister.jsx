@@ -27,8 +27,8 @@ const FormRegister = ({ handleAlert }) => {
           .signUp(values)
           .then((res) => {
             console.log(res);
-            handleAlert("success", "Đăng Ký Thành Công");
             navigate(paths.LOGIN);
+            handleAlert("success", "Đăng Ký Thành Công");
           })
           .catch((err) => {
             console.log(err);
@@ -107,6 +107,7 @@ const FormRegister = ({ handleAlert }) => {
         />
 
         <InputForm
+          className=""
           name="matKhau"
           type="password"
           handleChange={handleChange}
@@ -118,17 +119,6 @@ const FormRegister = ({ handleAlert }) => {
           icon="fa-thin fa-lock text-black font-bold"
         />
 
-        <InputForm
-          name="matKhau"
-          type="password"
-          handleChange={handleChange}
-          handleBlur={handleBlur}
-          touched={touched.matKhau}
-          value={values.matKhau}
-          errors={errors.matKhau}
-          placeholder="Confirm Password"
-          icon="fa-thin fa-lock text-black font-bold"
-        />
         <div className="my-5 col-span-2">
           <ButtonForm />
         </div>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { getMoviesApi, quanLyPhim } from "../../../api/movie.api";
+import { quanLyPhim } from "../../../api/movie.api";
 import { Table } from "antd";
 import { render } from "react-dom";
 import { AlertMessage } from "../../../App";
@@ -14,20 +14,35 @@ const MovieManager = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // const fetchData = async () => {
+  //   try {
+  //     const moviesData = await getMoviesApi();
+  //     setArrMovie(moviesData);
+  //     console.log(moviesData);
+  //     console.log(arrMovie);
+  //   } catch (error) {
+  //     console.error("Error fetching movies:", error);
+  //   }
+  // };
   useEffect(() => {
     // setArrMovie(getMoviesApi());
     fetchData();
-  }, []);
+    // để console.log ở đây
+    console.log(arrMovie);
+  }, [arrMovie]);
 
-  const fetchData = async () => {
-    try {
-      const moviesData = await getMoviesApi();
-      setArrMovie(moviesData);
-      console.log(moviesData);
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-    }
+  const fetchData = () => {
+    quanLyPhim
+      .layDanhSachPhim()
+      .then((res) => {
+        console.log(res);
+        setArrMovie(res.data.content);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
   const columns = [
     {
       title: "Mã Phim",
@@ -145,15 +160,18 @@ const MovieManager = () => {
   // }
   return (
     <>
-      <Table
-        bordered={true}
-        className=""
-        columns={columns}
-        dataSource={arrMovie}
-        pagination={{
-          defaultPageSize: 20,
-        }}
-      />
+      {/* {console.log(arrMovie)} : dòng console log k bỏ trong component dc nhé, phải bỏ bên ngoài return */}
+      {arrMovie && (
+        <Table
+          bordered={true}
+          className=""
+          columns={columns}
+          dataSource={arrMovie}
+          pagination={{
+            defaultPageSize: 20,
+          }}
+        />
+      )}
     </>
   );
 };

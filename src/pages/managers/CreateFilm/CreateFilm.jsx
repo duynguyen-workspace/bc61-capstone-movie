@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import InputText from "../../../components/Input/InputText";
 import { useFormik } from "formik";
 import { DatePicker, Rate, Select, Switch } from "antd";
-import { getMoviesApi, quanLyPhim } from "../../../api/movie.api";
+import { quanLyPhim } from "../../../api/movie.api";
 import useMessage from "antd/es/message/useMessage";
 import { AlertMessage } from "../../../App";
 import { useSelector } from "react-redux";
@@ -50,21 +50,22 @@ const CreateFilm = () => {
         } else {
           formData.append(key, values[key]);
         }
-        quanLyPhim
-          .themPhimUpLoadHinh(formData)
-          .then((res) => {
-            console.log(res);
-            handleAlert("success", res.data.content);
-          })
-          .catch((err) => {
-            console.log(err);
-            if (err) {
-              handleAlert("error", "Dữ liệu chưa đúng");
-              return;
-            }
-          });
       }
-      resetForm();
+      quanLyPhim
+        .themPhimUpLoadHinh(formData)
+        .then((res) => {
+          console.log(res);
+          // navigate(`${paths.ADMIN}/movies`);
+          handleAlert("success", res.data.content);
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err) {
+            handleAlert("error", "Dữ liệu chưa đúng");
+            return;
+          }
+        });
+      // resetForm();
     },
   });
 

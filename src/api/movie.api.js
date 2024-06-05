@@ -60,6 +60,10 @@ export const quanLyPhim = {
     return fetcher.delete(`/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
   },
 
+  layDanhSachPhim: () => {
+    return fetcher.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
+  },
+
   capNhatPhim: (movie) => {
     return fetcher.post("/QuanLyPhim/CapNhatPhimUpload", movie);
   },
