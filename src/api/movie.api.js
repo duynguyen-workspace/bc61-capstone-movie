@@ -62,3 +62,21 @@ export const Movie = {
         return fetcher.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
     },
 };
+
+export const quanLyPhim = {
+  themPhimUpLoadHinh: (data) => {
+    return fetcher.post("/QuanLyPhim/ThemPhimUploadHinh", data);
+  },
+
+  xoaPhim: (maPhim) => {
+    return fetcher.delete(`/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
+  },
+
+  layDanhSachPhim: () => {
+    return fetcher.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
+  },
+
+  capNhatPhim: (movie) => {
+    return fetcher.post("/QuanLyPhim/CapNhatPhimUpload", movie);
+  },
+};

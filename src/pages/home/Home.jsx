@@ -7,13 +7,13 @@ import "./home.scss";
 import HomePageEvent from "../../components/HomePageEvent/HomePageEvent";
 
 const Home = () => {
-    useEffect(() => {
-        getMoviesApi()
-            .then((result) => {
-                console.log("result: ", result);
-            })
-            .catch((err) => console.log("error: ", err));
-    }, []);
+  useEffect(() => {
+    getMoviesApi()
+      .then((result) => {
+        console.log("result: ", result);
+      })
+      .catch((err) => console.log("error: ", err));
+  }, []);
 
     return (
         <div className="home">

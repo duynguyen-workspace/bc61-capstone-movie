@@ -5,6 +5,7 @@ import paths from "../paths";
 import MainLayout from "../layouts/MainLayout";
 import AdminLayout from "../layouts/AdminLayout";
 import AuthLayout from "../layouts/AuthLayout";
+import CreateFilm from "../pages/managers/CreateFilm";
 import ListMovie from "../components/ListMovie/ListMovie";
 import Theater from "../components/Theater/Theater";
 import UserProfile from "../pages/userProfile/UserProfile";
@@ -40,8 +41,8 @@ const BookingRouter = () => {
 };
 
 const AdminRouter = () => {
-    // user's authentication for admin access
-    let isAuthenticated = false;
+  // user's authentication for admin access
+  let isAuthenticated = true;
 
     return isAuthenticated ? <Outlet /> : <Navigate to={"/401"} />;
 };
@@ -92,49 +93,57 @@ const useRoutesElements = () => {
             ],
         },
         {
-            path: paths.ADMIN,
-            element: <AdminRouter />,
-            children: [
-                {
-                    path: "",
-                    element: <AdminLayout />,
-                    children: [
-                        {
-                            index: true,
-                            element: (
-                                <Suspense fallback={<div>Loading...</div>}>
-                                    <AdminPage />
-                                </Suspense>
-                            ),
-                        },
-                        {
-                            path: "users",
-                            element: (
-                                <Suspense fallback={<div>Loading...</div>}>
-                                    <UserManagerPage />
-                                </Suspense>
-                            ),
-                        },
-                        {
-                            path: "movies",
-                            element: (
-                                <Suspense fallback={<div>Loading...</div>}>
-                                    <MovieManagerPage />
-                                </Suspense>
-                            ),
-                        },
-                        {
-                            path: "showtime",
-                            element: (
-                                <Suspense fallback={<div>Loading...</div>}>
-                                    <ShowtimeManagerPage />
-                                </Suspense>
-                            ),
-                        },
-                    ],
-                },
-            ],
+      path: paths.ADMIN,
+      element: <AdminRouter />,
+      children: [
+        {
+          path: "",
+          element: <AdminLayout />,
+          children: [
+            {
+              index: true,
+              element: (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <AdminPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: "users",
+              element: (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <UserManagerPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: "movies",
+              element: (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <MovieManagerPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: "showtime",
+              element: (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <ShowtimeManagerPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: "create",
+              element: (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <CreateFilm />
+                </Suspense>
+              ),
+            },
+          ],
         },
+      ],
+    },
         {
             path: paths.HOME,
             element: <MainLayout />,
