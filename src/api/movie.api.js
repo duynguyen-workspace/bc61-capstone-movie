@@ -12,7 +12,7 @@ import fetcher from "./fetcher";
 export const getMoviesApi = async () => {
     try {
         const response = await fetcher.get(
-            "/QuanLyPhim/LayDanhSachPhim?maNhom=GP01"
+            "/QuanLyPhim/LayDanhSachPhim?maNhom=GP02"
         );
         return response.data.content;
     } catch (exception) {
@@ -59,7 +59,7 @@ export const Banner = {
 
 export const Movie = {
     getMovieApi: () => {
-        return fetcher.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
+        return fetcher.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP02");
     },
 };
 
@@ -73,7 +73,7 @@ export const quanLyPhim = {
   },
 
   layDanhSachPhim: () => {
-    return fetcher.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
+    return fetcher.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP02");
   },
 
   capNhatPhim: (movie) => {

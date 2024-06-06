@@ -6,7 +6,7 @@ export const cinema = {
     },
     getDataShowTime: (rap) => {
         return fetcher.get(
-            `/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${rap}&maNhom=GP01`
+            `/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${rap}&maNhom=GP02`
         );
     },
 };
