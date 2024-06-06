@@ -39,10 +39,10 @@ const FormLogin = ({ handleAlert }) => {
         taiKhoan: Yup.string().required("Vui lòng không để trống"),
         matKhau: Yup.string()
           .required("Vui lòng không để trống")
-          .matches(
-            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
-            "Vui lòng nhập đúng định dạng mật khẩu"
-          ),
+          // .matches(
+          //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
+          //   "Vui lòng nhập đúng định dạng mật khẩu"
+          // ),
       }),
     });
   console.log(errors.taiKhoan);
