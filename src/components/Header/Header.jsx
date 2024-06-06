@@ -3,7 +3,13 @@ import logo from "../../assets/img/logo.png";
 import { NavLink } from "react-router-dom";
 import paths from "../../paths";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import DropDownProfile from "../DropDownProfile/DropDownProfile";
 const Header = () => {
+    const [openProfile, setOpenProfile] = useState(false);
+    const { users } = useSelector((state) => state.users);
+    // console.log(users);
+
     // Scroll down Header sẽ đổi từ màu transparent thành màu xanh
     const [navbar, setNavBar] = useState(false);
     const changeBackGround = () => {
@@ -67,33 +73,56 @@ const Header = () => {
                                 alt="Logo"
                             />
                         </NavLink>
-                        <div
-                            className={`${
-                                openLR
-                                    ? "header__log__res open__logRes"
-                                    : "header__log__res "
-                            } flex items-center lg:order-2`}
-                        >
-                            <NavLink
-                                to={paths.LOGIN}
-                                className="headerlg__item flex items-center"
-                            >
-                                <i className="fa-solid fa-circle-user text-3xl text-gray-300 mr-3"></i>
-                                {/* <i className="fa-regular fa-circle-user text-3xl text-gray-300 mr-3"></i> */}
-                                Log in
-                            </NavLink>
-                            <span className="text-gray-300 text-2xl mx-5 ">
-                                |
-                            </span>
+                        {users ? (
+                            <>
+                                {" "}
+                                <div className="relative">
+                                    <div
+                                        className="text-2xl font-bold text-white cursor-pointer"
+                                        onClick={() => {
+                                            setOpenProfile(!openProfile);
+                                        }}
+                                    >
+                                        <span>Hello, </span>
+                                        <i className="fa-regular fa-circle-user ml-3 mr-2"></i>
+                                        {users.taiKhoan}
+                                    </div>
+                                    {openProfile && <DropDownProfile />}
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                {" "}
+                                <div
+                                    className={`${
+                                        openLR
+                                            ? "header__log__res open__logRes"
+                                            : "header__log__res "
+                                    } flex items-center lg:order-2`}
+                                >
+                                    <NavLink
+                                        to={paths.LOGIN}
+                                        className="headerlg__item flex items-center"
+                                    >
+                                        <i className="fa-solid fa-circle-user text-3xl text-gray-300 mr-3"></i>
+                                        {/* <i className="fa-regular fa-circle-user text-3xl text-gray-300 mr-3"></i> */}
+                                        Log in
+                                    </NavLink>
+                                    <span className="text-gray-300 text-2xl mx-5">
+                                        I
+                                    </span>
 
-                            <NavLink
-                                to={paths.REGISTER}
-                                className="headerlg__item flex items-center"
-                            >
-                                <i className="fa-regular fa-circle-user text-3xl text-gray-300 mr-3"></i>
-                                Register
-                            </NavLink>
-                        </div>
+                                    <NavLink
+                                        to={paths.REGISTER}
+                                        className="headerlg__item flex items-center"
+                                    >
+                                        <i className="fa-regular fa-circle-user text-3xl text-gray-300 mr-3"></i>
+                                        Register
+                                    </NavLink>
+                                </div>
+                            </>
+                        )}
+
                         <div
                             className="justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
                             id="mobile-menu-2"

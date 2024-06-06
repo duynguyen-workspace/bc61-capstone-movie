@@ -70,9 +70,8 @@
             .hsearchBar__item {
                 .hsearchBar__form {
                     display: flex;
-                    justify-content: space-around;
+                    justify-content: space-evenly;
                     .form__search {
-                        display: flex;
                         .form__group {
                             display: flex;
                             align-items: center;
@@ -94,6 +93,7 @@
                             }
                             select {
                                 @apply text-white;
+                                width: 300px;
                                 background: transparent;
                                 border: none;
                             }
@@ -232,7 +232,7 @@
                                 span {
                                     font-size: 1.7rem;
                                 }
-                            } 
+                            }
                         }
                     }
                 }

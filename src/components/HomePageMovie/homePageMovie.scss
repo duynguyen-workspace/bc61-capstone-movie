@@ -24,6 +24,27 @@
         .view__detail {
             display: none;
         }
+        //Chỉnh margin của thư viện React Slick
+        .slick-slider {
+            .slick-slide > div {
+                margin: 0 10px;
+            }
+            .slick-prev:before,
+            .slick-next:before {
+                display: none;
+            }
+            .slick-arrow {
+                color: white;
+                font-size: 30px;
+                &:hover {
+                    color: rgb(161, 161, 161);
+                }
+            }
+            .slick-dots li button:before {
+                color: white;
+            }
+        }
+
         // Hover vào movie
         .hMovie__item__contain {
             &:hover {
@@ -103,3 +124,4 @@
         }
     }
 }
+
